@@ -17,11 +17,15 @@ const server = http.createServer((req, res) => {
         case "DELETE":
             deleteReq(req, res);
             break;
+        //caso padrao de default
+        default:
+            res.statusCode = 404;
+            res.setHeader("Content-Type", "application/json");
+            res.write(
+                JSON.stringify({ title:"Not Found", message: "Rout not found" })
+                );
+            res.end();
     }
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/json");
-    res.write(JSON.stringify({message: "Hello to Nodejs"}));
-    res.end();
 });
 
 server.listen(PORT, () => {
