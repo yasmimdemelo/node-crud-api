@@ -7,8 +7,9 @@ let movies = require("./data/movies.json");
 // require("dotenv").config();
 
 const PORT = process.env.PORT || 5001;
-req.movies = movies;
+
 const server = http.createServer((req, res) => {
+    req.movies = movies;
     switch (req.method) {
         case "GET":
             getReq(req, res);
