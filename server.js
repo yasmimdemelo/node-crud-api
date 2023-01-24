@@ -1,10 +1,13 @@
 const http = require('http');
-require("dotenv").config();
+// require("dotenv").config();
 
 const PORT = process.env.PORT || 5001;
 
-const server = http.createServer((req, resp) => {
-
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.write(JSON.stringify({message: "Hello to Nodejs"}));
+    res.end();
 });
 
 server.listen(PORT, () => {
